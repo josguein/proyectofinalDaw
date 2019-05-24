@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.set('useFindAndModify', false);
-mongoose.connect('mongodb+srv://root:<password>@cluster0-i1y5t.mongodb.net/test?retryWrites=true', {
+mongoose.connect('mongodb+srv://root:<naruto56>@cluster0-i1y5t.mongodb.net/test?retryWrites=true', {
   useCreateIndex: true,
   useNewUrlParser: true
 })
