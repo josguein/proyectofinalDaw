@@ -1,0 +1,50 @@
+<div class="col-md-4 mx-auto">
+  <div class="card text-center">
+    <div class="card-header">
+      <h3>New Test</h3>
+    </div>
+    <div class="card-body">
+      <form action="/quizs/new-quiz" method="POST">
+        <div class="form-group">
+          <input type="text" name="title" class="form-control" placeholder="Title" autofocus/>
+        </div>
+                <div class="form-group">
+          <textarea name="preguntas" class="form-control" data-limit-rows="true" rows="5" placeholder="preguntas"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="text" name="respuestas" class="form-control" rows="5" placeholder="Escriba V o F separado entre espacios">
+        </div>
+          <div class="form-group">
+          <textarea name="description" class="form-control" placeholder="Descripcion"></textarea>
+        </div>
+        <select class="mdb-select md-form" name="tema">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="historia">historia</option>
+          <option value="matematicas">matematicas</option>
+          <option value="ingles">ingles</option>
+        </select>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function () {
+  $('textarea[data-limit-rows=true]')
+    .on('keypress', function (event) {
+        var textarea = $(this),
+            text = textarea.val(),
+            numberOfLines = (text.match(/\n/g) || []).length + 1,
+            maxRows = parseInt(textarea.attr('rows'));
+
+        if (event.which === 13 && numberOfLines === maxRows ) {
+          return false;
+        }
+    });
+});
+
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {{#each notes}}
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title d-flex justify-content-between align-items-center">
+           <a href="/quizs/doingtest/{{_id}}">{{title}}</a>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <div class="col mx-auto">
+  <div class="card">
+    <div class="card-body">
+  <form action="/doTest" method="POST">
+    <select class="selectpicker show-tick" data-style="btn-info" name="tema">
+  <option value="" disabled selected>Choose your option</option>
+  <option value="matematicas">matematicas</option>
+  <option value="historia">historia</option>
+  <option value="ingles">ingles</option>
+</select>
+
+<button type="submit">Filtrar</button>
+
+  </form>
+  </div>
+  </div>
+  </div>
+  {{/each}}
+  
+</body>

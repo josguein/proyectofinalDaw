@@ -1,0 +1,37 @@
+<body>
+    
+
+<div class="card" id="carta">
+    <div class="card-body" style="background-color:yellow">
+        {{#each notes}}
+        <p>{{preguntas.[0]}}</p>
+
+        
+        <p>{{preguntas.[1]}}</p>
+        <p>{{res_correctas.[1]}}</p>
+        <p>{{preguntas.[2]}}</p>
+        <p>{{res_correctas.[2]}}</p>
+        <p>{{preguntas.[3]}}</p>
+        <p>{{res_correctas.[3]}}</p>
+        <p>{{preguntas.[4]}}</p>
+        <p>{{res_correctas.[4]}}</p>
+        {{/each}}
+        <p>Pregunta 1: {{corregido0}}</p>
+        <p>Pregunta 2: {{corregido1}}</p>
+        <p>Pregunta 3: {{corregido2}}</p>
+        <p>Pregunta 4: {{corregido3}}</p>
+        <p>Pregunta 5: {{corregido4}}</p>
+        <label>Respuestas Correctas:{{contador_aciertos}}</label>
+        <label>Respuestas Fallidas:{{contador_errores}}</label>
+    </div>
+    <button class="btn btn-primary" onclick="generarpdf()">Descargar pdf con los resultados</button>   
+</div>
+</body>
+<script>
+function generarpdf(){   
+var doc = new jsPDF()          
+var source = window.document.getElementById('carta');
+doc.fromHTML(source);
+doc.save('a4.pdf');
+}
+</script>
