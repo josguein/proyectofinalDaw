@@ -8,3 +8,4 @@ mongoose.connect('mongodb://admin:x7GRvTDSycf9RufC@SG-cluster1-21859.servers.mon
   .then(db => console.log('DB is connected'))
   .catch(err => console.error(err));
 /*'mongodb://localhost/node-notes-db'*/
+/*'mongodb://localhost/node-notes-db'*/
