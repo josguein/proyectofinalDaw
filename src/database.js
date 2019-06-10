@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.set('useFindAndModify', false);
-mongoose.connect('mongodb+srv://root:1234@cluster0-i1y5t.mongodb.net/Quizvoid?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://root:1234@cluster0-i1y5t.mongodb.net/test?retryWrites=true&w=majority', {
   useCreateIndex: true,
   useNewUrlParser: true
 })
