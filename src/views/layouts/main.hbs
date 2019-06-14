@@ -12,9 +12,10 @@
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="/css/main.css">
     <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--Custom js-->
     <script type="text/javascript" href="/js/query"></script>
+    <!--JS PDF-->
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
 
   </head>
@@ -29,17 +30,46 @@
     </main>
 
     <!-- Scritps -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 <!-- Footer -->
 <footer class="page-footer font-small blue pt-4">
   <!-- Copyright -->
-  <div class="footer bg-dark">© 2018 Copyright:
+  
+  <div class="footer bg-dark">
+    <div class="localizacion">Conectado actualmente desde:<span class="ciudad"></span></div>
+    © 2018 Copyright:
     <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+
   </div>
-  <!-- Copyright -->
+  <script>
+  $(document).ready(function(){  
+  if (navigator.geolocation) {
+    
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+
+
+
+function showPosition(position) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + "&units=metric&appid=9f50a805aa0089a1edd1829a5db029f0",
+            dataType: 'jsonp'
+        }).done(function (data) {
+            $('.ciudad').text(" "+data.name+" Temperatura: "+data.main.temp+"Cº");
+        }).fail(function () {
+            alert("Fallo en la conexion");
+        });
+
+}
+  });
+
+    
+  </script>
 </footer>
 
 </html>
